@@ -36,6 +36,22 @@ select {
 select {
     min-width: 300px; /* Ajuste conforme o necessário */
 }
+/* Adiciona rolagem horizontal às tabelas em telas menores */
+.table-wrapper {
+    overflow-x: auto; /* Permite rolar para os lados */
+    -webkit-overflow-scrolling: touch; /* Suave em dispositivos móveis */
+}
+
+table {
+    min-width: 600px; /* Define um tamanho mínimo para as tabelas */
+    border-collapse: collapse; /* Remove o espaçamento entre as células */
+}
+
+table th, table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
 
 
 /* Calendar */
