@@ -28,6 +28,15 @@ header h1 {
     font-size: 2.5rem;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
 }
+select {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch; /* Para permitir um scroll suave em dispositivos iOS */
+    white-space: nowrap; /* Previne que as opções do select quebrem linhas */
+}
+select {
+    min-width: 300px; /* Ajuste conforme o necessário */
+}
+
 
 /* Calendar */
 #calendar {
