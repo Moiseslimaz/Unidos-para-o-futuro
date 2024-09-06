@@ -1,26 +1,53 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Arvo:ital,wght@0,400;0,700;1,400;1,700&display=swap');/* Variáveis de Cores */
+:root {
+    --primary-color: #3248c7;
+    --secondary-color: #ffcc00;
+    --accent-color: #03a9f4;
+    --background-color: #f4f4f4;
+    --text-color: #333;
+    --border-color: #ddd;
+    --modal-background: rgba(0,0,0,0.5);
+    --modal-content-background: #fff;
+    --transition-speed: 0.3s; /* Transição padrão */
+}
+
 /* Global Styles */
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    
+    font-family: "Arvo", serif;
+    font-weight: 400;
+    font-style: normal; 
+    color: #000;
     line-height: 1.6;
     margin: 0;
     padding: 0;
-    background: #f4f4f4;
-    background-image: linear-gradient( to right, rgba(228, 243, 14, 0.233), rgba(206, 240, 12, 0.979), yellow, rgb(241, 226, 13) );}
+    background: var(--background-color);
+    background-image: linear-gradient(
+        to right,
+        rgba(3, 3, 3, 0.233),
+        rgba(162, 180, 58, 0.979),
+        rgb(224, 224, 17),
+        rgb(255, 255, 0)
+    );
+    color: var(--text-color);
+}
 
 /* Header */
-header {
+header {    
     text-align: center;
-    background-image: url('FOTOS/ft\ upf.jpeg');
+    background-image: url('FOTOS/ft upf.jpeg');
     background-size: cover;
     background-position: center;
     height: 300px;
-    color: #fff;
+    color: #dfd8d8;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     position: relative;
     overflow: hidden;
+    animation: fadeIn 1s ease-out;
 }
 
 header h1 {
@@ -28,31 +55,41 @@ header h1 {
     font-size: 2.5rem;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
 }
+
+/* Select Element */
 select {
     overflow-x: auto;
-    -webkit-overflow-scrolling: touch; /* Para permitir um scroll suave em dispositivos iOS */
-    white-space: nowrap; /* Previne que as opções do select quebrem linhas */
-}
-select {
-    min-width: 300px; /* Ajuste conforme o necessário */
-}
-/* Adiciona rolagem horizontal às tabelas em telas menores */
-.table-wrapper {
-    overflow-x: auto; /* Permite rolar para os lados */
-    -webkit-overflow-scrolling: touch; /* Suave em dispositivos móveis */
+    -webkit-overflow-scrolling: touch;
+    white-space: nowrap;
+    min-width: 300px;
+    transition: border-color var(--transition-speed) ease;
 }
 
+/* Table Wrapper */
+.table-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    animation: slideIn 0.5s ease;
+}
+
+/* Table Styles */
 table {
-    min-width: 600px; /* Define um tamanho mínimo para as tabelas */
-    border-collapse: collapse; /* Remove o espaçamento entre as células */
+    min-width: 600px;
+    border-collapse: collapse;
+    animation: fadeIn 1s ease-out;
 }
 
 table th, table td {
     padding: 10px;
-    border: 1px solid #ddd;
+    border: 1px solid var(--border-color);
     text-align: center;
+    transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
 }
 
+table th:hover, table td:hover {
+    background-color: #f4f4f4;
+    color: var(--primary-color);
+}
 
 /* Calendar */
 #calendar {
@@ -63,6 +100,7 @@ table th, table td {
     max-width: 600px;
     margin: 0 auto;
     padding: 10px;
+    animation: fadeIn 1s ease-out;
 }
 
 .calendar-header {
@@ -70,10 +108,11 @@ table th, table td {
     justify-content: space-between;
     align-items: center;
     padding: 10px;
-    background: #3f51b5;
+    background: var(--primary-color);
     color: #fff;
     border-radius: 8px;
     margin-bottom: 10px;
+    animation: fadeIn 0.5s ease-out;
 }
 
 .calendar-header h2 {
@@ -84,21 +123,23 @@ table th, table td {
 .calendar-header button {
     background: #fff;
     border: none;
-    color: #ebe702;
+    color: var(--accent-color);
     font-size: 1.2rem;
     cursor: pointer;
     padding: 5px 10px;
     border-radius: 4px;
+    transition: background 0.3s ease;
 }
 
 .calendar-header button:hover {
     background: #ddd;
+    animation: buttonPulse 1s infinite;
 }
 
 .calendar-grid {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    background: #f4f4f4;
+    background: var(--background-color);
     border-radius: 8px;
 }
 
@@ -107,6 +148,7 @@ table th, table td {
     padding: 10px;
     background: #e0e0e0;
     font-weight: bold;
+    transition: background-color 0.3s ease;
 }
 
 .calendar-days {
@@ -120,18 +162,19 @@ table th, table td {
     padding: 15px;
     background: #fff;
     cursor: pointer;
-    border: 1px solid #ddd;
+    border: 1px solid var(--border-color);
     border-radius: 4px;
+    transition: background 0.3s ease, transform 0.3s ease;
 }
 
 .calendar-days div.event-day {
     background: #e3f2fd;
-    border-color: #03a9f4;
+    border-color: var(--accent-color);
     position: relative;
 }
 
 .calendar-days div.event-day .event-indicator {
-    background: #03a9f4;
+    background: var(--accent-color);
     border-radius: 50%;
     width: 6px;
     height: 6px;
@@ -145,9 +188,10 @@ table th, table td {
 
 .calendar-days div:hover {
     background: #f1f1f1;
+    transform: scale(1.05);
 }
 
-/* Modal styles */
+/* Modal Styles */
 .modal {
     display: none;
     position: fixed;
@@ -157,17 +201,19 @@ table th, table td {
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgba(0,0,0,0.5);
+    background-color: var(--modal-background);
+    animation: fadeIn 0.5s ease-out;
 }
 
 .modal-content {
-    background-color: #fff;
+    background-color: var(--modal-content-background);
     margin: 10% auto;
     padding: 20px;
     border-radius: 8px;
     width: 80%;
     max-width: 500px;
     position: relative;
+    animation: slideIn 0.5s ease-out;
 }
 
 .close {
@@ -177,6 +223,7 @@ table th, table td {
     position: absolute;
     top: 10px;
     right: 20px;
+    transition: color 0.3s ease;
 }
 
 .close:hover {
@@ -198,11 +245,12 @@ nav a {
     margin: 0 15px;
     font-weight: bold;
     font-size: 1.1rem;
-    transition: color 0.3s ease;
+    transition: color 0.3s ease, transform 0.3s ease;
 }
 
 nav a:hover {
-    color: #ffcc00;
+    color: var(--secondary-color);
+    transform: scale(1.1);
 }
 
 /* Container */
@@ -211,6 +259,7 @@ nav a:hover {
     max-width: 1200px;
     margin: auto;
     overflow: hidden;
+    animation: fadeIn 1s ease-out;
 }
 
 /* Section */
@@ -220,13 +269,16 @@ nav a:hover {
     margin: 20px 0;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 1s ease-out;
 }
 
+/* Section Title */
 .section h2 {
     margin-top: 0;
-    color: #333;
+    color: var(--text-color);
     border-bottom: 2px solid #eee;
     padding-bottom: 10px;
+    animation: slideIn 0.5s ease-out;
 }
 
 /* Tables */
@@ -234,18 +286,6 @@ nav a:hover {
     width: 100%;
     border-collapse: collapse;
     margin: 20px 0;
-}
-
-#tabela-jogos th, #resultados-tabela th, #classificacao-tabela th,
-#tabela-jogos td, #resultados-tabela td, #classificacao-tabela td {
-    border: 1px solid #ddd;
-    padding: 12px;
-    text-align: center;
-}
-
-#tabela-jogos th, #resultados-tabela th, #classificacao-tabela th {
-    background-color: #f8f8f8;
-    font-weight: bold;
 }
 
 /* News Slider */
@@ -259,9 +299,10 @@ nav a:hover {
     display: none;
     padding: 15px;
     background: #f9f9f9;
-    border: 1px solid #ddd;
+    border: 1px solid var(--border-color);
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    animation: slideIn 0.5s ease;
 }
 
 .news-item.active {
@@ -279,28 +320,30 @@ nav a:hover {
     width: 100%;
     max-width: 300px;
     height: auto;
-    border: 2px solid #ddd;
+    border: 2px solid var(--border-color);
     border-radius: 8px;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .gallery img:hover {
     transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 /* Feedback Form */
 #feedback-form label {
     display: block;
     margin: 10px 0 5px;
-    color: #333;
+    color: var(--text-color);
 }
 
 #feedback-form input, #feedback-form textarea, #feedback-form select {
     width: 100%;
     padding: 10px;
     margin-bottom: 10px;
-    border: 1px solid #ddd;
+    border: 1px solid var(--border-color);
     border-radius: 4px;
+    transition: border-color var(--transition-speed) ease;
 }
 
 #feedback-form input[type="submit"] {
@@ -311,16 +354,17 @@ nav a:hover {
     padding: 10px;
     font-size: 1rem;
     border-radius: 4px;
-    transition: background 0.3s ease;
+    transition: background 0.3s ease, transform 0.3s ease;
 }
 
 #feedback-form input[type="submit"]:hover {
     background: #555;
+    transform: scale(1.05);
 }
 
 /* Chat Box */
 .chat-box {
-    border: 1px solid #ddd;
+    border: 1px solid var(--border-color);
     padding: 10px;
     height: 200px;
     overflow-y: auto;
@@ -328,11 +372,17 @@ nav a:hover {
     margin-bottom: 10px;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 0.5s ease-out;
 }
 
 .chat-box div {
     padding: 5px;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid var(--border-color);
+    transition: background-color 0.3s ease;
+}
+
+.chat-box div:hover {
+    background-color: #f4f4f4;
 }
 
 /* Chat Form */
@@ -344,11 +394,12 @@ nav a:hover {
     padding: 10px;
     font-size: 1rem;
     border-radius: 4px;
-    transition: background 0.3s ease;
+    transition: background 0.3s ease, transform 0.3s ease;
 }
 
 #chat-form input[type="submit"]:hover {
     background: #555;
+    transform: scale(1.05);
 }
 
 /* Notification */
@@ -362,6 +413,7 @@ nav a:hover {
     border-radius: 4px;
     display: none;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 0.5s ease-out;
 }
 
 .notification button {
@@ -372,11 +424,12 @@ nav a:hover {
     padding: 5px 10px;
     margin-left: 10px;
     border-radius: 4px;
-    transition: background 0.3s ease;
+    transition: background 0.3s ease, transform 0.3s ease;
 }
 
 .notification button:hover {
     background: #777;
+    transform: scale(1.05);
 }
 
 /* Footer */
@@ -387,22 +440,25 @@ nav a:hover {
     padding: 15px 0;
     position: relative;
     width: 100%;
+    animation: fadeIn 1s ease-out;
 }
 
-/* Estilo da seção do elenco */
+/* Team Roster */
 #team-roster {
     background: #f0f0f0;
     padding: 30px;
     border-radius: 10px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     margin: 20px 0;
+    animation: fadeIn 1s ease-out;
 }
 
 #team-roster h2 {
     margin-top: 0;
     font-size: 2.5rem;
-    color: #3f51b5;
+    color: var(--primary-color);
     text-align: center;
+    animation: slideIn 0.5s ease-out;
 }
 
 .roster-container {
@@ -412,15 +468,17 @@ nav a:hover {
     justify-content: center;
 }
 
+/* Player Card */
 .player-card {
     background: #fff;
-    border: 1px solid #ddd;
+    border: 1px solid var(--border-color);
     border-radius: 5px;
     width: 220px;
     text-align: center;
     padding: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: fadeIn 0.5s ease-out;
 }
 
 .player-card img {
@@ -429,6 +487,7 @@ nav a:hover {
     border-radius: 10%;
     border: 2px solid #000000b9;
     margin-bottom: 10px;
+    transition: transform 0.3s ease;
 }
 
 .player-info {
@@ -438,7 +497,7 @@ nav a:hover {
 .player-info h3 {
     margin: 0;
     font-size: 1.3rem;
-    color: #333;
+    color: var(--text-color);
 }
 
 .player-info p {
@@ -452,11 +511,56 @@ nav a:hover {
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
+.player-card img:hover {
+    transform: scale(1.1);
+}
+
+/* Biography Section */
 .bio {
     font-size: 0.8rem;
     color: #444;
     margin-top: 10px;
     text-align: justify;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes buttonPulse {
+    0% {
+        background-color: var(--accent-color);
+    }
+    50% {
+        background-color: var(--secondary-color);
+    }
+    100% {
+        background-color: var(--accent-color);
+    }
+}
+
+@keyframes backgroundColorChange {
+    0% {
+        background: var(--background-color);
+    }
+    100% {
+        background: #e0e0e0;
+    }
 }
 
 /* Media Queries for Mobile Devices */
@@ -562,4 +666,47 @@ nav a:hover {
     .bio {
         font-size: 0.6rem;
     }
+}
+
+/* Additional Styles */
+button, input[type="button"], input[type="submit"] {
+    border: none;
+    cursor: pointer;
+    transition: background-color var(--transition-speed), color var(--transition-speed), transform var(--transition-speed);
+}
+
+button:hover, input[type="button"]:hover, input[type="submit"]:hover {
+    background-color: var(--secondary-color);
+    color: #333;
+    transform: scale(1.05);
+}
+
+a {
+    transition: color var(--transition-speed), transform var(--transition-speed);
+}
+
+a:hover {
+    color: var(--secondary-color);
+    transform: scale(1.05);
+}
+
+/* Utility Classes */
+.text-center {
+    text-align: center;
+}
+
+.margin-top {
+    margin-top: 20px;
+}
+
+.padding-10 {
+    padding: 10px;
+}
+
+.border {
+    border: 1px solid var(--border-color);
+}
+
+.rounded {
+    border-radius: 8px;
 }
